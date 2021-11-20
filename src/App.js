@@ -37,11 +37,19 @@ function App() {
   const onSubmit = (e) => {
     e.preventDefault();
 
+    if (query === "") {
+      return Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "¡Ingresa el producto de una receta!",
+      });
+    }
+
     if (healthLabel === "") {
       return Swal.fire({
         icon: "error",
         title: "Oops...",
-        text: "¡Ingresa un valor valido!",
+        text: "¡Selecciona un filtro valido!",
       });
     }
     getRecipiesInfo();
@@ -59,7 +67,7 @@ function App() {
 
             <div>
               <form className="app__searchForm" onSubmit={onSubmit}>
-                <div className="row g-3 px-5">
+                <div className="row g-3 px-5 justify-content-center align-items-center">
                   <div className="col-md-5">
                     <div className="form-floating mb-2">
                       <input
